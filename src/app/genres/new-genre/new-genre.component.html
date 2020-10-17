@@ -1,0 +1,10 @@
+<form novalidate (ngSubmit)="onAddGenre()" [formGroup]="newGenreForm">
+	<mat-form-field>
+		<mat-label>Genre name</mat-label>
+		<input matInput formControlName="genreName">
+	</mat-form-field>
+	<br>
+	<button mat-stroked-button>{{buttonText}}</button>
+</form>
+
+

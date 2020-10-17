@@ -1,0 +1,13 @@
+<mat-list role="list" *ngFor="let publisher of publishers">
+    <mat-list-item role="listitem">
+        {{publisher.publisherName}}
+        &nbsp;&nbsp;
+        <button mat-stroked-button color="primary" (click)="editPublisherModal(publisher)">Edit</button>
+        &nbsp;&nbsp;
+        <button mat-stroked-button color="warn" (click)="deletePublisherModal(publisher)">Delete</button>
+    </mat-list-item>
+</mat-list>
+<br>
+<div>
+    <button mat-raised-button color="primary" (click)="newPublisherModal()">New publisher</button>
+</div>

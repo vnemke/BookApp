@@ -1,0 +1,49 @@
+<form novalidate (ngSubmit)="onAddBook()" [formGroup]="newBookForm">
+	<mat-form-field>
+		<mat-label>Book name</mat-label>
+		<input matInput formControlName="bookName">
+	</mat-form-field>
+	<br>
+	<mat-form-field>
+		<mat-label>Authors</mat-label>
+		<mat-select formControlName="authors" multiple> 
+			<mat-option *ngFor="let author of authors" [value]="author.id">{{author.authorName}}</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<br>
+	<mat-form-field>
+		<mat-label>Genres</mat-label>
+		<mat-select formControlName="genres" multiple> 
+			<mat-option *ngFor="let genre of genres" [value]= "genre.id">{{genre.genreName}}</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<br>
+	<mat-form-field>
+		<mat-label>Publisher</mat-label>
+		<mat-select formControlName="PublisherId"> 
+			<mat-option *ngFor="let publisher of publishers" [value]= "publisher.id">{{publisher.publisherName}}</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<br>
+	<mat-form-field>
+		<mat-label>Release year</mat-label>
+		<input matInput formControlName="releaseYear">
+	</mat-form-field>
+	<br>
+	<mat-form-field>
+		<mat-label>Price</mat-label>
+		<input matInput formControlName="price">
+	</mat-form-field>
+	<br>
+	<mat-form-field>
+		<mat-label>Description</mat-label>
+		<textarea matInput formControlName="description"></textarea>
+	</mat-form-field>
+	<br>
+
+	<button mat-stroked-button>{{buttonText}}</button>
+</form>
+
+
+  
+

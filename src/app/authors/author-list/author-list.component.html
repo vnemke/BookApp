@@ -1,0 +1,13 @@
+<mat-list role="list" *ngFor="let author of authors">
+    <mat-list-item role="listitem">
+        {{author.authorName}}
+        &nbsp;&nbsp;
+        <button mat-stroked-button color="primary" (click)="editAuthorModal(author)">Edit</button>
+        &nbsp;&nbsp;
+        <button mat-stroked-button color="warn" (click)="deleteAuthorModal(author)">Delete</button>
+    </mat-list-item>
+</mat-list>
+<br>
+<div>
+    <button mat-raised-button color="primary" (click)="newAuthorModal()">New author</button>
+</div>

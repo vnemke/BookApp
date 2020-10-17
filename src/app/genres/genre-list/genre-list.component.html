@@ -1,0 +1,13 @@
+<mat-list role="list" *ngFor="let genre of genres">
+    <mat-list-item role="listitem">
+        {{genre.genreName}}
+        &nbsp;&nbsp;
+        <button mat-stroked-button color="primary" (click)="editGenreModal(genre)">Edit</button>
+        &nbsp;&nbsp;
+        <button mat-stroked-button color="warn" (click)="deleteGenreModal(genre)">Delete</button>
+    </mat-list-item>
+</mat-list>
+<br>
+<div>
+    <button mat-raised-button color="primary" (click)="newGenreModal()">New genre</button>
+</div>
