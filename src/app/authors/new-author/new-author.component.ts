@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/api.service';
@@ -35,7 +35,7 @@ export class NewAuthorComponent implements OnInit {
 
 		if(this.mode === 'create') {
 			this.buttonText = 'Add author';
-			this.newAuthorForm = this.fb.group({authorName: ['']})
+			this.newAuthorForm = this.fb.group({authorName: ['',[Validators.required]]})
 		} else {
 			this.buttonText = 'Update author';
 			this.newAuthorForm = this.fb.group({authorName: this.author.authorName})

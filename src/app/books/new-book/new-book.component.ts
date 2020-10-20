@@ -6,7 +6,7 @@ import { Author } from '../../authors/Author';
 import { Genre } from '../../genres/Genre';
 import { Publisher } from '../../publishers/Publisher'
 
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BookStoreService } from '../book-store.service';
@@ -47,12 +47,12 @@ export class NewBookComponent implements OnInit {
 		if(this.mode == 'create') {
 			this.buttonText = 'Add book';
 			this.newBookForm = this.fb.group({
-				bookName: [''],
-				authors: [''],
-				genres: [''],
-				PublisherId: [''],
-				releaseYear: [''],
-				price: [''],
+				bookName: ['', [Validators.required, Validators.minLength(3)]],
+				authors: ['', [Validators.required]],
+				genres: ['', [Validators.required]],
+				PublisherId: ['', [Validators.required]],
+				releaseYear: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+				price: ['', [Validators.required]],
 				description: ['']
 			})
 		} else {
@@ -61,13 +61,13 @@ export class NewBookComponent implements OnInit {
 			const genres = this.book.Genres.map(genre => genre.id)
 
 			this.newBookForm = this.fb.group({
-				bookName: this.book.bookName,
-				authors: [authors],
-				genres: [genres],
-				PublisherId: [this.book.Publisher.id],
-				releaseYear: this.book.releaseYear,
-				price: this.book.price,
-				description: this.book.description 
+				bookName: [this.book.bookName, [Validators.required, Validators.minLength(3)]],
+				authors: [authors, [Validators.required]],
+				genres: [genres, [Validators.required]],
+				PublisherId: [this.book.Publisher.id, [Validators.required]],
+				releaseYear: [this.book.releaseYear, [Validators.required, Validators.pattern("^[0-9]*$")]],
+				price: [this.book.price, [Validators.required]],
+				description: [this.book.description, [Validators.required]] 
 			})
 		}
 	}

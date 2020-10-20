@@ -2,6 +2,9 @@
 	<mat-form-field>
 		<mat-label>Book name</mat-label>
 		<input matInput formControlName="bookName">
+		<mat-error *ngIf="newBookForm.get('bookName').errors?.required">
+			Enter book name
+		</mat-error>
 	</mat-form-field>
 	<br>
 	<mat-form-field>
@@ -9,6 +12,9 @@
 		<mat-select formControlName="authors" multiple> 
 			<mat-option *ngFor="let author of authors" [value]="author.id">{{author.authorName}}</mat-option>
 		</mat-select>
+		<mat-error *ngIf="newBookForm.get('authors').errors?.required">
+			Select authors
+		</mat-error>
 	</mat-form-field>
 	<br>
 	<mat-form-field>
@@ -16,6 +22,9 @@
 		<mat-select formControlName="genres" multiple> 
 			<mat-option *ngFor="let genre of genres" [value]= "genre.id">{{genre.genreName}}</mat-option>
 		</mat-select>
+		<mat-error *ngIf="newBookForm.get('genres').errors?.required">
+			Select genres
+		</mat-error>
 	</mat-form-field>
 	<br>
 	<mat-form-field>
@@ -23,16 +32,28 @@
 		<mat-select formControlName="PublisherId"> 
 			<mat-option *ngFor="let publisher of publishers" [value]= "publisher.id">{{publisher.publisherName}}</mat-option>
 		</mat-select>
+		<mat-error *ngIf="newBookForm.get('PublisherId').errors?.required">
+			Select publisher
+		</mat-error>
 	</mat-form-field>
 	<br>
 	<mat-form-field>
 		<mat-label>Release year</mat-label>
 		<input matInput formControlName="releaseYear">
+		<mat-error *ngIf="newBookForm.get('releaseYear').errors?.required">
+			Enter release year 
+		</mat-error>
+		<mat-error *ngIf="newBookForm.get('releaseYear').errors?.pattern">
+			Must be a number 
+		</mat-error>
 	</mat-form-field>
 	<br>
 	<mat-form-field>
 		<mat-label>Price</mat-label>
 		<input matInput formControlName="price">
+		<mat-error *ngIf="newBookForm.get('price').errors?.required">
+			Enter price 
+		</mat-error>
 	</mat-form-field>
 	<br>
 	<mat-form-field>
@@ -40,10 +61,7 @@
 		<textarea matInput formControlName="description"></textarea>
 	</mat-form-field>
 	<br>
-
-	<button mat-stroked-button>{{buttonText}}</button>
+	<button mat-stroked-button type="submit" [disabled] = "!newBookForm.valid">
+		{{buttonText}}
+	</button>
 </form>
-
-
-  
-

@@ -101,6 +101,7 @@ export class BookListComponent implements OnInit, AfterViewInit {
 		this.trigger.openMenu();
 	}
 
+	//search book
 	onTypeBook(event) {
 		if(event.target.value=='') {
 			this.dataSource.filter='';

@@ -2,6 +2,9 @@
 	<mat-form-field>
 		<mat-label>Genre name</mat-label>
 		<input matInput formControlName="genreName">
+		<mat-error *ngIf="newGenreForm.get('genreName').errors?.required">
+			Enter genre name
+		</mat-error>
 	</mat-form-field>
 	<br>
 	<button mat-stroked-button>{{buttonText}}</button>

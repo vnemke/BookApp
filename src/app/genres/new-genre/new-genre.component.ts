@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/api.service';
@@ -33,10 +33,10 @@ export class NewGenreComponent implements OnInit {
 	ngOnInit(): void {
 		if (this.mode == 'create') {
 			this.buttonText = 'Add genre'
-			this.newGenreForm = this.fb.group({genreName: ['']})
+			this.newGenreForm = this.fb.group({genreName: ['', [Validators.required]]})
 		} else {
 			this.buttonText = 'Update genre'
-			this.newGenreForm = this.fb.group({genreName: this.genre.genreName})
+			this.newGenreForm = this.fb.group({genreName: [this.genre.genreName, [Validators.required]]})
 		}	
 	}
 

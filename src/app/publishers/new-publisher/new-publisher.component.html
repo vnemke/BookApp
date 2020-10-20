@@ -2,6 +2,9 @@
 	<mat-form-field>
 		<mat-label>Publisher name</mat-label>
 		<input matInput formControlName="publisherName">
+		<mat-error *ngIf="newPublisherForm.get('publisherName').errors?.required">
+			Enter publisher name
+		</mat-error>
 	</mat-form-field>
 	<br>
 	<button mat-stroked-button>{{buttonText}}</button>

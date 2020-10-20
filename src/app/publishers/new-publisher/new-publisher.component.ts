@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ApiService } from 'src/app/api.service';
@@ -33,10 +33,10 @@ export class NewPublisherComponent implements OnInit {
 
 		if(this.mode === 'create') {
 			this.buttonText = 'Add publisher'
-			this.newPublisherForm = this.fb.group({publisherName: ['']})
+			this.newPublisherForm = this.fb.group({publisherName: ['', [Validators.required]]})
 		} else {
 			this.buttonText = 'Update publisher';
-			this.newPublisherForm = this.fb.group({publisherName: this.publisher.publisherName})
+			this.newPublisherForm = this.fb.group({publisherName: [this.publisher.publisherName, [Validators.required]]})
 		}	
 	}
 
