@@ -13,7 +13,6 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { DeleteBookComponent } from './book-list/delete-book/delete-book.component'
 
 import { getAllBooks } from './books.resolver';
-import { getOneBook } from './get-one-resolver.service';
 import { getAllAuthors } from './authors.resolver';
 import { getAllGenres } from './genres.resolver'
 import { getAllPublishers } from './publishers.resolver';
@@ -43,12 +42,16 @@ const routes: Routes = [
     {
         path: 'edit/:id',
         component: EditBookComponent,
-        resolve: { book: getOneBook }
     },
     {
         path: ':id',
         component: BookDetailComponent,
-        resolve: { book: getOneBook }
+        resolve: {
+            books: getAllBooks, 
+            authors: getAllAuthors, 
+            genres: getAllGenres,
+            publishers: getAllPublishers 
+        }
     }
 ];
 

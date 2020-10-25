@@ -4,7 +4,10 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
 	{ path: 'home', component: HomeComponent },
-	{ path: '', redirectTo: 'home', pathMatch: 'full' },
+	{ 
+		path: '', 
+		loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+	},
 	{ 
 		path: 'books', 
 		loadChildren: () => import('./books/books.module').then(m => m.BooksModule)
@@ -21,6 +24,7 @@ const routes: Routes = [
 		path: 'publishers', 
 		loadChildren: () => import('./publishers/publishers.module').then(m => m.PublishersModule)
 	}
+
 ];
 
 @NgModule({

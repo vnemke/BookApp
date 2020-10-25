@@ -2,28 +2,29 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Book } from './Book';
-import { Author } from '../authors/Author';
 import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
 	providedIn: 'root'
 })
 export class BookStoreService {
-
+	book: Book;
 	books: Book[] = [];
 	filteredBooks: Book[] = [];
 
+	book$: BehaviorSubject<Book> = new BehaviorSubject<any>({})
 	books$: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>([]);
+	
 	
 	constructor(public route: ActivatedRoute) {
 		this.filteredBooks = this.books;
-		this.books$.next([]);
+				
 	}
-
 
 	loadBooks(books:Book[]){
 		this.books = books;
-		this.books$.next(this.books);
+		this.books$.next(this.books);		
 	}
 
 	addBook(book:Book) {
@@ -31,10 +32,18 @@ export class BookStoreService {
 		this.books$.next(this.books);
 	}
 
+	getOneBook(id: number) {
+		const i = this.books.findIndex(element => element.id == id);
+		this.book$.next(this.books[i]);
+		return this.book$;
+	}
+
 	editBook(book:Book) {
 		const i = this.books.findIndex(element => element.id === book.id);
 		this.books[i] = book;
-		this.books$.next(this.books)
+		this.book$.next(this.books[i])
+		this.books$.next(this.books);
+		return this.book$
 	}
 	
 	deleteBook(book:Book){

@@ -1,3 +1,36 @@
-<h1>{{book.bookName}}</h1> 
-<button (click)="onDeleteBook()">Delete</button>
-  
+<!-- <h1>{{book.bookName}}</h1>
+<button (click)="onDeleteBook()">Delete</button> -->
+
+
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-subtitle>Book name</mat-card-subtitle>
+        <mat-card-title>{{book.bookName}}</mat-card-title>
+     
+        <mat-card-subtitle>Authors</mat-card-subtitle>
+        <mat-card-title *ngFor="let author of book.Authors">{{author.authorName}}</mat-card-title>
+
+        <mat-card-subtitle>Genres</mat-card-subtitle>
+        <mat-card-title *ngFor="let genre of book.Genres">{{genre.genreName}}</mat-card-title>
+
+        <mat-card-subtitle>Publishers</mat-card-subtitle>
+        <mat-card-title>{{book.Publisher.publisherName}}</mat-card-title>
+
+        <mat-card-subtitle>Release year</mat-card-subtitle>
+        <mat-card-title>{{book.releaseYear}}</mat-card-title>
+
+        <mat-card-subtitle>Price</mat-card-subtitle>
+        <mat-card-title>{{book.price}}</mat-card-title>
+
+        <mat-card-subtitle>Description</mat-card-subtitle>
+        <mat-card-title>{{book.description}}</mat-card-title>
+        
+    </mat-card-header>
+
+    <!-- <img mat-card-image src={{book.coverUrl}}> -->
+   
+    <mat-card-actions>
+        <button mat-button (click)="editBookModal(book)">Edit</button>
+        <button mat-button (click)="deleteBookModal(book)">Delete</button>
+    </mat-card-actions>
+</mat-card>

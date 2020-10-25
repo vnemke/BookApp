@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { Router } from '@angular/router';
 
 
 import { ApiService } from '../../../api.service';
@@ -17,7 +18,12 @@ export class DeleteBookComponent implements OnInit {
 	books: Book[] = [];
 	deleteDisabled: boolean = true; 
 
-	constructor(private api: ApiService, private _mdr: MatDialogRef<DeleteBookComponent>, @Inject(MAT_DIALOG_DATA) data: any, private bookStore:BookStoreService) { 
+	constructor(private api: ApiService, 
+		private _mdr: MatDialogRef<DeleteBookComponent>, 
+		@Inject(MAT_DIALOG_DATA) data: any, 
+		private bookStore:BookStoreService, 
+		private router: Router) { 
+
 		this.book = data.book;
 		
 	}
@@ -28,6 +34,7 @@ export class DeleteBookComponent implements OnInit {
 		this.api.delete('/api/books/' + this.book.id)
 		.subscribe(() => {
 			this.bookStore.deleteBook(this.book);
+			this.router.navigate(['books'])
 			this._mdr.close(false);
 		})
 	}

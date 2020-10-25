@@ -7,7 +7,6 @@ import { Genre } from 'src/app/genres/Genre';
 import { Publisher } from 'src/app/publishers/Publisher';
 
 import { NewBookComponent } from '../new-book/new-book.component';
-import { EditBookComponent } from '../edit-book/edit-book.component';
 import { DeleteBookComponent } from './delete-book/delete-book.component'
 
 import { MatSort } from '@angular/material/sort';
@@ -32,8 +31,7 @@ export class BookListComponent implements OnInit, AfterViewInit {
 	displayedColumns: string[];
 	dataSource: MatTableDataSource<Book>
 	dialogNewBook: MatDialogRef<NewBookComponent>;
-	dialogEditBook: MatDialogRef<EditBookComponent>;
-	matDialogRef: MatDialogRef<DeleteBookComponent>;
+	dialogDeleteBook: MatDialogRef<DeleteBookComponent>;
 
 	@ViewChild(MatTable) table:MatTable<any>;
 
@@ -42,8 +40,8 @@ export class BookListComponent implements OnInit, AfterViewInit {
 	}
 
 	// delete modal
-	openDeleteModal(book:Book) {
-		this.matDialogRef = this.matDialog.open(DeleteBookComponent, {
+	deleteBookModal(book:Book) {
+		this.dialogDeleteBook = this.matDialog.open(DeleteBookComponent, {
 			data: { 
 				book: book
 			},
@@ -63,7 +61,6 @@ export class BookListComponent implements OnInit, AfterViewInit {
 	}
 
 	editBookModal(book: Book) {
-
 		this.dialogNewBook = this.matDialog.open(NewBookComponent, {
 			data: {
 				mode: 'edit',
@@ -73,7 +70,6 @@ export class BookListComponent implements OnInit, AfterViewInit {
 				publishers: this.publishers
 			}
 		})
-		
 	}
 
 	ngOnInit(): void {
@@ -84,9 +80,10 @@ export class BookListComponent implements OnInit, AfterViewInit {
 			this.filteredBooks = books;
 		});
 
+		this.authors = this.route.snapshot.data.authors;
 		this.genres = this.route.snapshot.data.genres;
 		this.publishers = this.route.snapshot.data.publishers;	
-		this.authors = this.route.snapshot.data.authors;
+		
 	}
 
 	//sorting

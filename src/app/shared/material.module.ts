@@ -12,7 +12,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
-
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
 	declarations: [],
@@ -28,7 +28,8 @@ import { MatListModule } from '@angular/material/list';
 		MatSortModule,
 		MatSnackBarModule,
 		MatCheckboxModule,
-		MatListModule
+		MatListModule,
+		MatCardModule
 	],
 	exports: [
 		MatInputModule,
@@ -41,7 +42,8 @@ import { MatListModule } from '@angular/material/list';
 		MatSortModule,
 		MatSnackBarModule,
 		MatCheckboxModule,
-		MatListModule
+		MatListModule,
+		MatCardModule
 	],
 	providers: [
 		{
