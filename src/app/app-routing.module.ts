@@ -6,7 +6,7 @@ const routes: Routes = [
 	{ path: 'home', component: HomeComponent },
 	{ 
 		path: '', 
-		loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+		loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
 	},
 	{ 
 		path: 'books', 

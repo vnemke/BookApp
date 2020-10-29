@@ -38,4 +38,4 @@ const routes: Routes = [
         MatDialogModule
 	]
 })
-export class LoginModule { }
+export class AuthModule { }

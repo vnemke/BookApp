@@ -104,9 +104,6 @@ export class BookListComponent implements OnInit, AfterViewInit {
 			this.dataSource.filter='';
 			return;
 		}
-		this.dataSource.filter = event.target.value;
-		
+		this.dataSource.filter = event.target.value;	
 	}
-
-
 }
