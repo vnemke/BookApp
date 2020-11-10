@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { ApiService } from 'src/app/api.service';
+import { AuthService } from '../auth.service';
+
 
 @Component({
 	selector: 'app-sign-in',
@@ -10,25 +11,31 @@ import { ApiService } from 'src/app/api.service';
 	styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-
 	signInForm: FormGroup;
-	url = '/api/auth/login';
-	hide = true
+	loginError= false;
 
-	constructor(private fb: FormBuilder, public api: ApiService, private router: Router) { }
+	constructor(private fb: FormBuilder, public authService: AuthService, private router: Router) { }
 
 	ngOnInit(): void {
 		this.signInForm = this.fb.group({
 			email: ['',[Validators.required]],
-			password: ['']
+			password: ['', [Validators.required]]
 		})
+		
 	}
 
-	signIn() {
-		this.api.post(this.url, this.signInForm.value)
-		.subscribe(result => {
-			this.router.navigate(['books'])
-			console.log(result);
-		})
+	OnSignIn() {
+		this.authService.signIn(this.signInForm.value.email, this.signInForm.value.password)
+		.subscribe((res: string) => {
+			localStorage.setItem('token', res)
+			this.router.navigate(['books'])},
+			err => {
+				this.loginError= true;
+			}
+		)
+	}
+
+	onChangeFunction(){
+		this.loginError = false	
 	}
 }

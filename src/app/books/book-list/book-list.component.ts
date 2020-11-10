@@ -15,7 +15,6 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { BookStoreService } from '../book-store.service';
 
-
 @Component({
 	selector: 'app-book-list',
 	templateUrl: './book-list.component.html',
@@ -82,10 +81,9 @@ export class BookListComponent implements OnInit, AfterViewInit {
 
 		this.authors = this.route.snapshot.data.authors;
 		this.genres = this.route.snapshot.data.genres;
-		this.publishers = this.route.snapshot.data.publishers;	
-		
+		this.publishers = this.route.snapshot.data.publishers;
 	}
-
+	
 	//sorting
 	@ViewChild(MatSort, {static: false}) sort: MatSort;
 	ngAfterViewInit() {

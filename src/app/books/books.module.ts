@@ -17,6 +17,8 @@ import { getAllAuthors } from './authors.resolver';
 import { getAllGenres } from './genres.resolver'
 import { getAllPublishers } from './publishers.resolver';
 
+import { AuthGuard } from '../auth.guard';
+
 
 const routes: Routes = [
     {
@@ -72,6 +74,6 @@ const routes: Routes = [
         MatDialogModule
     ],
     entryComponents: [ NewBookComponent, EditBookComponent, DeleteBookComponent ],
-    providers: [getAllAuthors],
+    providers: [getAllAuthors, AuthGuard],
 })
 export class BooksModule { }

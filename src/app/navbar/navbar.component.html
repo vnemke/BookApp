@@ -1,0 +1,9 @@
+<mat-toolbar class="navbar">
+    <div>Book store</div>
+    <div>
+        <!-- <span *ngIf="!loggedIn"><a [routerLink]="['/books']">Books</a></span> -->
+        <span *ngIf="!isAuth"><a [routerLink]="['/signup']">Register</a></span>
+        <span *ngIf="!isAuth"><a [routerLink]="['']">Login</a></span>
+        <span *ngIf="isAuth" (click)="onLogout()">Logout</span>
+    </div>
+</mat-toolbar>

@@ -13,6 +13,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 @NgModule({
 	declarations: [],
@@ -29,7 +31,9 @@ import { MatCardModule } from '@angular/material/card';
 		MatSnackBarModule,
 		MatCheckboxModule,
 		MatListModule,
-		MatCardModule
+		MatCardModule,
+		MatToolbarModule,
+		FlexLayoutModule
 	],
 	exports: [
 		MatInputModule,
@@ -43,7 +47,8 @@ import { MatCardModule } from '@angular/material/card';
 		MatSnackBarModule,
 		MatCheckboxModule,
 		MatListModule,
-		MatCardModule
+		MatCardModule,
+		MatToolbarModule
 	],
 	providers: [
 		{

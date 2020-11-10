@@ -19,14 +19,19 @@
             <mat-form-field appearance="fill">
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email" required>
-                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+                <mat-error *ngIf="signUpForm.get('email').errors?.required">
+                    Please enter email
+                </mat-error>
             </mat-form-field>
         </p>
         
         <p>
             <mat-form-field>
                 <mat-label>Password</mat-label>
-                <input type="password" matInput placeholder="Password" formControlName="password">
+                <input matInput type="password" formControlName="password" required>
+                <mat-error *ngIf="signUpForm.get('password').errors?.required">
+                    Please enter password
+                </mat-error>
             </mat-form-field>
         </p>    
 

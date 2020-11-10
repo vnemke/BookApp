@@ -18,7 +18,6 @@ import { BookStoreService } from '../book-store.service';
 	styleUrls: ['./new-book.component.css']
 })
 export class NewBookComponent implements OnInit {
-	
 	url = '/api/books';
 	newBookForm: FormGroup;
 	authors: Author[] = [];
@@ -43,7 +42,6 @@ export class NewBookComponent implements OnInit {
 	}
 	
 	ngOnInit(): void {
-		
 		if(this.mode == 'create') {
 			this.buttonText = 'Add book';
 			this.newBookForm = this.fb.group({
@@ -84,7 +82,7 @@ export class NewBookComponent implements OnInit {
 				});
 			})		
 		} else {
-			this.api.put('/api/books/' + this.book.id,this.newBookForm.value)
+			this.api.put('/api/books/' + this.book.id, this.newBookForm.value)
 			.subscribe((book:Book) => {
 				this.bookStore.editBook(book);
 				this._mdr.close(false);
